@@ -19,7 +19,7 @@ u32 func_80022FD0(u32 arg0)
 
 #pragma GLOBAL_ASM("asm/nonmatchings/camera/func_80023028.s")
 
-extern  f32 _nsqrtf(f32);                                  
+extern  f32 _nsqrtf(f32); //?                              
 
 
 void func_800231B0(f32* arg0, f32* arg1) {
