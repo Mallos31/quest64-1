@@ -23,7 +23,7 @@ O_FILES := $(foreach file,$(S_FILES),$(BUILD_DIR)/$(file).o) \
 TARGET = $(BUILD_DIR)/$(BASENAME).$(VERSION)
 LD_SCRIPT = $(BASENAME).ld
 
-CROSS = mips64-elf-
+CROSS = mips-linux-gnu-
 AS = $(CROSS)as
 CPP = cpp
 LD = $(CROSS)ld
