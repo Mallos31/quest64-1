@@ -88,25 +88,25 @@ s32 func_80031ACC(s32 arg0, s32 arg1)
 }
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/31F00/func_80031BB0.s")
-s32 func_80031BB0(s32 arg0) {
+s32 func_80031BB0(s32 pfsErr) {
     s32 var_v1;
 
-    switch (arg0) {
-    case 1:
+    switch (pfsErr) {
+    case PFS_ERR_NOPACK:
         var_v1 = -1;
         break;
-    case 4:
-    case 11:
+    case PFS_ERR_CONTRFAIL:
+    case PFS_ERR_DEVICE:
         var_v1 = -2;
         break;
-    case 3:
-    case 10:
+    case PFS_ERR_INCONSISTENT:
+    case PFS_ERR_ID_FATAL:
         var_v1 = -3;
         break;
-    case 2:
+    case PFS_ERR_NEW_PACK:
         var_v1 = -4;
         break;
-    case 9:
+    case PFS_ERR_EXIST:
         var_v1 = -5;
         break;
     default:

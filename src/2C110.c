@@ -44,16 +44,16 @@ void func_8002D5D4(void) {
     }
 }
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/2C110/func_8002D614.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/2C110/func_8002D614.s") //!TODO This function needs a rewrite once more Pfs data is confirmed.
 void func_8002D614(void) {
-    s32 temp_v0;
+    s32 pfsErr;
     s32 temp_v1;
     
 
-    temp_v0 = func_8003195C(D_80092870, D_8008FD30[D_8008FD2A].unk_01);
-    if (temp_v0 != 0) {
-        D_8008FD24 = temp_v0;
-        temp_v1 = -func_80031BB0(temp_v0);
+    pfsErr = func_8003195C(D_80092870, D_8008FD30[D_8008FD2A].unk_01);
+    if (pfsErr != 0) {
+        D_8008FD24 = pfsErr;
+        temp_v1 = -func_80031BB0(pfsErr);
         switch (temp_v1) {
             case 1:
                 D_8008FD22 = 8;
