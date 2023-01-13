@@ -1,3 +1,12 @@
+.section .late_rodata
+glabel D_80070F30
+/* 71B30 80070F30 400921FB54442D18 */ .double 3.14159265358979312
+
+glabel D_80070F38
+/* 71B38 80070F38 4041800000000000 */ .double 35
+
+
+.section .text
 glabel func_80002F60
 /* 3B60 80002F60 27BDFFD0 */  addiu      $sp, $sp, -0x30
 /* 3B64 80002F64 AFBF001C */  sw         $ra, 0x1C($sp)
@@ -60,8 +69,8 @@ glabel func_80002F60
 /* 3C3C 8000303C 00000000 */   nop
 /* 3C40 80003040 0C0019DD */  jal        func_80006774
 /* 3C44 80003044 2484BACC */   addiu     $a0, $a0, %lo(D_8007BACC)
-/* 3C48 80003048 3C018008 */  lui        $at, %hi(D_8007BABA)
-/* 3C4C 8000304C A422BABA */  sh         $v0, %lo(D_8007BABA)($at)
+/* 3C48 80003048 3C018008 */  lui        $at, %hi(D_8007BAB8 + 0x2)
+/* 3C4C 8000304C A422BABA */  sh         $v0, %lo(D_8007BAB8 + 0x2)($at)
 .L80003050:
 /* 3C50 80003050 10000036 */  b          .L8000312C
 /* 3C54 80003054 00000000 */   nop
@@ -148,8 +157,8 @@ glabel func_80002F60
 /* 3D90 80003190 0C0056D4 */  jal        func_80015B50
 /* 3D94 80003194 00000000 */   nop
 /* 3D98 80003198 14400128 */  bnez       $v0, .L8000363C
-/* 3D9C 8000319C 3C0B8008 */   lui       $t3, %hi(D_8007BABA)
-/* 3DA0 800031A0 956BBABA */  lhu        $t3, %lo(D_8007BABA)($t3)
+/* 3D9C 8000319C 3C0B8008 */   lui       $t3, %hi(D_8007BAB8 + 0x2)
+/* 3DA0 800031A0 956BBABA */  lhu        $t3, %lo(D_8007BAB8 + 0x2)($t3)
 /* 3DA4 800031A4 3C058008 */  lui        $a1, %hi(D_8007BACC)
 /* 3DA8 800031A8 24A5BACC */  addiu      $a1, $a1, %lo(D_8007BACC)
 /* 3DAC 800031AC 11600007 */  beqz       $t3, .L800031CC
@@ -163,9 +172,9 @@ glabel func_80002F60
 .L800031CC:
 /* 3DCC 800031CC 0C001CF3 */  jal        func_800073CC
 /* 3DD0 800031D0 2484BAB8 */   addiu     $a0, $a0, %lo(D_8007BAB8)
-/* 3DD4 800031D4 3C018008 */  lui        $at, %hi(D_8007BABA)
+/* 3DD4 800031D4 3C018008 */  lui        $at, %hi(D_8007BAB8 + 0x2)
 /* 3DD8 800031D8 3C048008 */  lui        $a0, %hi(D_8007BACC)
-/* 3DDC 800031DC A420BABA */  sh         $zero, %lo(D_8007BABA)($at)
+/* 3DDC 800031DC A420BABA */  sh         $zero, %lo(D_8007BAB8 + 0x2)($at)
 /* 3DE0 800031E0 0C0074D6 */  jal        func_8001D358
 /* 3DE4 800031E4 2484BACC */   addiu     $a0, $a0, %lo(D_8007BACC)
 /* 3DE8 800031E8 10000114 */  b          .L8000363C

@@ -10,6 +10,24 @@ typedef struct {
 extern f64 D_80071238;
 
 
+
+typedef struct Unkstruct {
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+    s16 unk6;
+    s16 unk8;
+    s16 unkA;
+    char unkC[0x186];
+    s16 unk192;
+} Unkstruct;
+
+extern Unkstruct D_800826D8[];
+extern Unkstruct D_80082866[];
+extern s32 D_8004C428;
+extern u16 D_80082868;
+extern u16 D_8008286A;
+
 #pragma GLOBAL_ASM("asm/nonmatchings/C910/func_8000BD10.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/C910/func_8000C42C.s")
@@ -176,3 +194,33 @@ void func_8000E418(f32 arg0, f32 arg1, f32 arg2, f32 arg3, s32 arg4)
 #pragma GLOBAL_ASM("asm/nonmatchings/C910/func_8000EB30.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/C910/func_8000EDD8.s")
+/*void func_8000EDD8(void) {
+    s32 var_v0;
+    u16 temp_t0;
+    u16 temp_t7;
+    u16 temp_t8;
+    u16 temp_t9;
+    Unkstruct* var_a0;
+
+    if (D_8004C428 >= 0) {
+        D_8004C428 = 0;
+        var_a0 = D_80082866;
+        var_v0 = 0xC8;
+        D_8008286A = D_80082868;
+        do {
+            temp_t7 = var_a0->unk0;
+            temp_t8 = var_a0->unk2;
+            temp_t9 = var_a0->unk4;
+            temp_t0 = var_a0->unk6;
+            var_v0--;
+            var_a0--;
+            var_a0->unkA = temp_t7;
+            var_a0->unk8 = temp_t8;
+            var_a0->unk6 = temp_t9;
+            var_a0->unk4 = temp_t0;
+        } while (var_v0 != 0);
+        D_800826D8->unk0 = D_800826D8->unk192;
+        return;
+    }
+    D_8004C428 += 1;
+}*/

@@ -22,9 +22,6 @@ typedef struct {
     char unk4C[0x14];
 }unk19324s;
 
-typedef struct {
-    s16 unk0[0x68];
-}unk19ca4s;
 
 //This struct is fine, it's just an example of loop unrolling. 
 typedef struct {
@@ -39,11 +36,43 @@ typedef struct {
 }unk1a238s;
 
 
+typedef struct {
+/* 0x00 */ s16 fenceState;
+/* 0x02 */ s16 animTimer;
+/* 0x04 */ s16 fenceType;
+/* 0x06 */ s16 unk6; //padding?
+/* 0x08 */ char unk8[0x8];
+/* 0x10 */ f32 x1;
+/* 0x14 */ f32 y1;
+/* 0x18 */ f32 z1;
+/* 0x1C */ f32 x2;
+/* 0x20 */ f32 y2;
+/* 0x24 */ f32 z2;
+/* 0x28 */ f32 x3;
+/* 0x2C */ f32 y3;
+/* 0x30 */ f32 z3;
+/* 0x34 */ f32 x4;
+/* 0x38 */ f32 y4;
+/* 0x3C */ f32 z4;
+/* 0x40 */ f32 x5;
+/* 0x44 */ f32 y5;
+/* 0x48 */ f32 z5;
+/* 0x4C */ f32 x6;
+/* 0x50 */ f32 y6;
+/* 0x54 */ f32 z6;
+/* 0x58 */ f32 x7;
+/* 0x5C */ f32 y7;
+/* 0x60 */ f32 z7;
+/* 0x64 */ f32 x8;
+/* 0x68 */ f32 y8;
+/* 0x6C */ f32 z8;
+/* 0x70 */ char unk70[0x60];
+}BattleFence;
 
+extern BattleFence D_800880A8[];
 extern unk18684s D_80087210;
 extern unk19324s D_800874E8;
 extern unk1a238s D_800875A8;
-extern unk19ca4s D_800880A8[];
 
 
 void func_80018684(void);
@@ -136,7 +165,7 @@ void func_80019324(void) {
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/191F0/func_80019CA4.s") //! TODO
 void func_80019CA4(s32 arg0) {
-    D_800880A8[arg0].unk0[0] = 0;
+    D_800880A8[arg0].fenceState = 0;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/191F0/func_80019CCC.s")
@@ -151,9 +180,6 @@ void func_8001A238(void) {
     do {
         var_v0--;
         var_v1->unk0 = 0;
-        //var_v1->unk58 = 0;
-        //var_v1->unkB0 = 0;
-        //var_v1->unk108 = 0;
         var_v1++;
     } while (var_v0 != 0);
 }

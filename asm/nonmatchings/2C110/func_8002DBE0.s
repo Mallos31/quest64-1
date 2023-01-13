@@ -1,3 +1,10 @@
+.section .rodata
+glabel D_80071750
+/* 72350 80071750 */ .asciz "Repair Info %d %d\n"
+                      .balign 4
+
+
+.section .text
 glabel func_8002DBE0
 /* 2E7E0 8002DBE0 27BDFFE8 */  addiu      $sp, $sp, -0x18
 /* 2E7E4 8002DBE4 AFBF0014 */  sw         $ra, 0x14($sp)

@@ -6,10 +6,33 @@ typedef struct {
     char unk6[0x36];
 }unk15b50s;
 
-extern unk15b50s D_80086F18;
-extern u16 D_80086F1C;
+typedef struct {
+    char unk0[0x8C];
+    u16 unk8C;
+}unk18278s2;
+
+typedef struct {
+    char unk0[0x68];
+    unk18278s2* unk68;
+}unk18278s;
+
+typedef struct {
+    char unk0[0xC];
+    f32 unkC;
+    f32 unk10;
+    f32 unk14;
+}unk14e80a0s;
+
+extern s32 D_80086F10;
+extern s16 D_80087170;
+extern s16 D_80087188;
+extern s16 D_800871A0;
+extern s16 D_800871B8;
+extern u16 D_8004CD74[];
+extern unk15b50s D_80086F18[];
 
 #pragma GLOBAL_ASM("asm/nonmatchings/15440/func_80014840.s")
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/15440/func_80014890.s")
 
@@ -17,9 +40,29 @@ extern u16 D_80086F1C;
 
 #pragma GLOBAL_ASM("asm/nonmatchings/15440/func_80014A98.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/15440/func_80014E80.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/15440/func_80014E80.s")
+void func_80014E80(unk14e80a0s* arg0, MonsterBattleData* arg1) {
 
-#pragma GLOBAL_ASM("asm/nonmatchings/15440/func_80014ED4.s")
+    arg0->unkC = arg1->x;
+    arg0->unk14 = arg1->z;
+    if (arg1->unk64->monsterType == 1) {
+        arg0->unk10 = arg1->unk68->unk94 - (arg1->unk64->hitboxHeight * arg1->scale);
+        return;
+    }
+    arg0->unk10 = arg1->y;
+}
+
+//#pragma GLOBAL_ASM("asm/nonmatchings/15440/func_80014ED4.s")
+void func_80014ED4(unk14e80a0s* arg0, MonsterBattleData* arg1) {
+    
+    arg0->unkC = arg1->x;
+    arg0->unk14 = arg1->z;
+    if (arg1->unk64->monsterType == 1) {
+        arg0->unk10 = arg1->unk68->unk94;
+        return;
+    }
+    arg0->unk10 = (f32) ((f64) arg1->y + ((f64) arg1->unk64->hitboxWidth * 0.5 * (f64) arg1->scale));
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/15440/func_80014F48.s")
 
@@ -39,12 +82,12 @@ extern u16 D_80086F1C;
 
 #pragma GLOBAL_ASM("asm/nonmatchings/15440/func_800156D0.s")
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/15440/func_80015B50.s") //! TODO May need more work. D_80086F18 is the beginning of an array of structs.
+//#pragma GLOBAL_ASM("asm/nonmatchings/15440/func_80015B50.s")
 s32 func_80015B50(void) {
     unk15b50s* var_v0;
     s32 var_v1;
     var_v1 = 10;
-    var_v0 = &D_80086F18;
+    var_v0 = D_80086F18;
     while (var_v1 != 0 && var_v0->unk4 == 0) {
         var_v1--;
         var_v0++;
@@ -177,9 +220,15 @@ void func_800175B8(s32 arg0, unk173e0s* arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/15440/func_8001817C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/15440/func_80018278.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/15440/func_80018278.s")
+s32 func_80018278(s32 arg0, unk18278s* arg1) {
+    return *(&D_8004CD74[arg0]) & arg1->unk68->unk8C;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/15440/func_8001829C.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/15440/func_8001829C.s")
+void func_8001829C(s32 arg0, unk18278s* arg1) {
+    arg1->unk68->unk8C |= D_8004CD74[arg0];
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/15440/func_800182C4.s")
 

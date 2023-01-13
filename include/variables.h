@@ -9,6 +9,7 @@ extern Mtx D_2000000[]; //Gfx matrix
 extern Mtx D_2000040[];
 extern s32 D_8007B2F8; //Gfx matrix index? 
 
+extern OSContPad D_80092874;
 
 extern unkdb38s D_80084E60; //Door animation data
 extern s32 D_8007D2D0;
@@ -44,7 +45,6 @@ extern s16 D_8007BA60;
 extern u16 D_8007BA62;
 extern s16 D_8007BA64;
 extern s16 D_8007BABE;
-extern s8 D_8007D19C;
 
 
 extern u8 D_8008D00E;
@@ -57,14 +57,11 @@ extern u16 D_80084F14;
 extern s32 D_80085370;
 extern s16 D_800859E2;
 extern f32 D_80086E44;
-extern unk20888s D_8008C668;
+//extern unk20888s D_8008C668;
 extern s8 D_8008FCC1;
 extern u16 D_8008FCC2;
 extern s16 D_8008FCC4;
-extern u16 D_8008FD20;
 extern s8 D_8008FD22;
-extern s32 D_8008FD24;
-extern temp D_8008FD30[];
 extern u8 gLastInvSlot;
 extern unkShadows D_80085BD0[];
 extern s32 D_800862D0;
@@ -72,12 +69,8 @@ extern s32 D_8008F92C;
 extern s32 D_8008D090;
 extern OSMesgQueue D_8008F288;
 extern s16 gameMode;
-extern u16 D_8008FD0C;
 extern u8 D_8008FD28;
-extern s8 D_8008FD29;
-extern s8 D_8008FD2A;
 extern s8 D_8008FD2B;
-extern s8 D_8008FD2C;
 extern s32 D_8008C560;
 extern s32 D_8008C564;
 extern f32 D_8008C574;
@@ -99,22 +92,21 @@ extern u16 currentDay;
 
 
 //These types may be incorrect. Defined in func_8002513C
-extern s32 D_800538F0;
+extern ALBankFile* D_800538E8;
+extern ALSeqFile* D_800538F0;
 extern ALHeap D_8008F240;
 extern ALCSPlayer D_8008F994;
 extern ALSeqpConfig D_8008FB14;
-extern ALSeqPlayer D_8008FB30;
+extern ALCSPlayer D_8008FB30;
 extern unk2513cs D_8008F978;
-extern unk2513cs2* D_800538E8;
+//extern unk2513cs2* D_800538E8;
 //end of func_8002513C defines. 
 
 extern u16 D_80084EE0;
-extern unk222b4s* D_80084F1C;
 
 //Inventory
 extern s32 gInventoryScrollAmt; 
 extern s32 gInvHighlightedItemIndex;
-extern u8 D_8008CF77;
 
 
 extern unk213d8s D_803A91F0[];
@@ -139,8 +131,6 @@ extern u8 D_D3E2C0[];
 
 extern s32 D_8007D0C4;
 
-extern s32 D_80088428;
-extern s32 D_80088420;
 
 extern unk11170s D_800859E8[];
 
@@ -148,7 +138,7 @@ extern s32 gNextSubmap;
 extern u16 gAllowBattles; 
 extern sMapData* gMapData;
 
-extern MtxF D_8008D030;
+
 extern u32 D_8004D748; //possibly RNG seed
 extern f64 D_800716D0;
 extern f64 D_800716D8;
@@ -160,7 +150,6 @@ extern f32 D_80086E88[4];
 extern f32 D_80086ECC;
 extern f32 D_80086ED4;
 
-extern Message D_800905E0[];
 
 //joystick stuff?
 extern u8 D_80092850;
@@ -189,6 +178,7 @@ extern f32 D_80071428;
 extern f32 D_8007142C;
 extern unkD80086DC0s D_80086DC0;
 extern unkD80086EE0s D_80086EE0;
+extern u16 D_80092876;
 
 extern u8 D_8004D740[];
 extern u8 D_80086AE8[];
@@ -196,7 +186,9 @@ extern u8 D_800869D8[];
 
 extern OSMesgQueue D_80092880;
 extern OSContPad D_80092AA8;
-extern u16 D_80092874;
-extern s16 D_80092876;
 extern u16 D_80092878;
+
+
+extern unk84f1cs* D_80084F1C;
+
 #endif

@@ -1,3 +1,9 @@
+.section .late_rodata
+glabel D_800716C8
+/* 722C8 800716C8 4082C00000000000 */ .double 600
+
+
+.section .text
 glabel func_800208B8
 /* 214B8 800208B8 3C0E8009 */  lui        $t6, %hi(D_8008C668)
 /* 214BC 800208BC 95CEC668 */  lhu        $t6, %lo(D_8008C668)($t6)

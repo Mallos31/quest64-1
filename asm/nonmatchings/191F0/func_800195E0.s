@@ -1,3 +1,12 @@
+.section .late_rodata
+glabel D_80071598
+/* 72198 80071598 3FECCCCCCCCCCCCD */ .double 0.900000000000000022
+
+glabel D_800715A0
+/* 721A0 800715A0 3FD921FB54442D18 */ .double 0.392699081698724139
+
+
+.section .text
 glabel func_800195E0
 /* 1A1E0 800195E0 3C018007 */  lui        $at, %hi(D_80071598)
 /* 1A1E4 800195E4 D42E1598 */  ldc1       $f14, %lo(D_80071598)($at)

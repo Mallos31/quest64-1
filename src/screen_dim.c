@@ -6,13 +6,7 @@
 #define SCREEN_BRIGHTENING 4
 
 
-typedef struct
-{
-    u8 red;
-    u8 green;
-    u8 blue;
-    u8 alpha;
-}Color_RGBA8;
+
 
 
 extern u16 gScreenDimFlags;

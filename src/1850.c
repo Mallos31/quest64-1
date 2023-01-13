@@ -24,7 +24,7 @@ typedef struct OSScTask_s {
 
 typedef struct {
     OSScTask task;
-    char unk58[0xD0E0];
+    char unk58[0xD0F0];
     OSMesg unkD148;
     void *unkD14C; 
 }unk111Cs;
@@ -70,10 +70,8 @@ void func_80000EEC(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/1850/func_80000FE8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/1850/func_8000111C.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/1850/func_8000111C.s")
 
-/*This needs a lot of work to get compiling. Unsure how as of yet*/
-/*
 void func_8000111C(unk111Cs* arg0) {
     arg0->task.list.t.type = M_GFXTASK;
     arg0->task.list.t.flags = 0;    
@@ -93,7 +91,7 @@ void func_8000111C(unk111Cs* arg0) {
     arg0->task.msgQ = &D_8007B9E8;
     arg0->task.msg = &arg0->unkD148;
     arg0->task.framebuffer = arg0->unkD14C;
-}*/
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/1850/func_800011DC.s")
 

@@ -2,6 +2,10 @@
 
 #define ARRAY_COUNT(a) (sizeof(a) / sizeof(a[0]))
 
+extern u8 D_8008CF77;
+extern Gfx D_803A8FF8[];
+
+
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/inventory/Inventory_Init.s")
 void Inventory_Init(void) {
@@ -179,19 +183,19 @@ s32 func_8002224C(s32 arg0, s32 arg1) {
 
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/inventory/func_80022260.s")
-s32 func_80022260(unk22260s* arg0, unk22260s2* arg1) {
-    s32 var_v1;
-    unk22260s3* temp_v0;
+s32 func_80022260(BrianData2* arg0, unk22260s2* arg1) {
+    BrianData1* temp_v0;
+    s32 ret;
 
-    var_v1 = 0;
-    temp_v0 = arg0->unk64;
-    if ((arg1->unk4 != 0) && (temp_v0->unk6 != temp_v0->unk4)) {
-        var_v1 = 1;
+    ret = 0;
+    temp_v0 = arg0->brianData1;
+    if ((arg1->unk4 != 0) && (temp_v0->maxHP != temp_v0->currHP)) {
+        ret = 1;
     }
-    if ((arg1->unk6 != 0) && (temp_v0->unkA != temp_v0->unk8)) {
-        var_v1 = 1;
+    if ((arg1->unk6 != 0) && (temp_v0->maxMP != temp_v0->currMP)) {
+        ret = 1;
     }
-    return var_v1;
+    return ret;
 }
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/inventory/func_800222B4.s")

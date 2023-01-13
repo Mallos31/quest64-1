@@ -129,6 +129,14 @@ typedef struct unk_1b0d0_s{
     char unk2[0x3E];
 }unk1b0d0;
 
+typedef struct
+{
+    u8 red;
+    u8 green;
+    u8 blue;
+    u8 alpha;
+}Color_RGBA8;
+
 typedef struct unk_110d0_s{
     s32 unk0;
     char unk4[0x2C];
@@ -156,10 +164,6 @@ typedef struct unk_2260c_s{
     s16 unk4;
 }unk2260cs;
 
-typedef struct unk_20888_s{
-    s16 unk0;
-    char unk4[0x1A];
-}unk20888s;
 
 typedef struct temp {
     s8 unk_00;
@@ -179,6 +183,17 @@ typedef struct unk_232f4_s{
     f32 unk0;
     f32 unk4;
 }unk232f4s;
+
+typedef struct unk_1d924_s
+{
+    s32 unk0;
+    s16 unk4;
+    s16 unk6;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+}unk1d924s;
 
 typedef struct unk_23df4_s
 {
@@ -270,6 +285,24 @@ typedef struct unk_e3c4_s
     char unk58[0x18];
 }unke3c4s;
 
+//Used in multiple C files
+typedef struct {
+    char unk0[0x52];
+    s16 unk52;
+    u16 unk54;
+    u16 unk56;
+    s16 unk58;
+    s16 unk5A;
+    u16 unk5C;
+    s16 unk5E;
+    u16 unk60;
+}unk1e0acs;
+
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+}unk1e0acs2;
+
 
 //update
 typedef struct unk_1d8b0_s
@@ -285,27 +318,27 @@ typedef struct unk_1d8b0_s
     u16 unk60;
 }unk1d8b0s;
 
-typedef struct Message
-{
-/*0x00*/    s32 unk0; //textbox state? 
-/*0x04*/    s16 xpos; //textbox xpos
-/*0x06*/    s16 ypos; //textbox ypos
-/*0x08*/    s16 width; //width
-/*0x0A*/    s16 height; //height
-/*0x0C*/    s16 quillTimer; //quill position timer
-/*0x0E*/    u8 unkE;
-/*0x0F*/    s8 unkF;
-/*0x10*/    s8 unk10;
-/*0x11*/    s8 unk11;
-/*0x12*/    s16 unk12;
-/*0x14*/    s8 unk14;
-/*0x15*/    s8 unk15;
-/*0x16*/    s8 unk16;
-/*0x17*/    char unk17[0x21];
-/*0x38*/    s16 unk38;
-/*0x3A*/    s16 unk3A;
-/*0x3C*/    char unk3C[0x860];
-} Message; // size = 0x89C
+//typedef struct Message
+//{
+///*0x00*/    s32 unk0; //textbox state? 
+///*0x04*/    s16 xpos; //textbox xpos
+///*0x06*/    s16 ypos; //textbox ypos
+///*0x08*/    s16 width; //width
+///*0x0A*/    s16 height; //height
+///*0x0C*/    s16 quillTimer; //quill position timer
+///*0x0E*/    u8 unkE;
+///*0x0F*/    s8 unkF;
+///*0x10*/    s8 unk10;
+///*0x11*/    s8 unk11;
+///*0x12*/    s16 unk12;
+///*0x14*/    s8 unk14;
+///*0x15*/    s8 unk15;
+///*0x16*/    s8 unk16;
+///*0x17*/    char unk17[0x21];
+///*0x38*/    s16 unk38;
+///*0x3A*/    s16 unk3A;
+///*0x3C*/    char unk3C[0x860];
+//} Message; // size = 0x89C
 
 typedef struct player_Action_s
 {
@@ -359,6 +392,26 @@ typedef struct unk_D_80086DC0_s
 
 
 typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+    f32 unk10;
+    u16 unk14;
+    char unk16[0xE];    
+}unkfde0s;
+
+typedef struct {
+    s32 unk0;
+    unkfde0s* unk4;
+    s32 unk8;
+    char unkC[0x6];
+    u16 unk12;
+    u16 unk14;
+}unk84f1cs;
+
+
+typedef struct {
     u8 unk0[0x18];
 }AIScript;
 
@@ -382,8 +435,9 @@ typedef struct {
     /* 0x2C */ u16 aiScriptNumber;
     /* 0x2E */ u16 unk2E;
     /* 0x30 */ AIScript* AIScript;
-    /* 0x34 */ u16 itemDrop;
-    /* 0x36 */ u16 unk32;
+    /* 0x34 */ u8 itemDrop;
+    /* 0x35 */ u8 unk35;
+    /* 0x36 */ u16 unk36;
 } MonsterBaseData; // size 0x38
 
 typedef struct {

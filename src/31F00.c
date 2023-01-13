@@ -3,7 +3,10 @@
 extern OSPfs D_80092898[];
 extern s8 D_80092870;
 extern OSMesgQueue D_80092880;
+extern u8 D_8005FB40;
+extern s32 D_8005FB74;
 
+void func_800319E0(s32 arg0, s32 arg1, s32 arg2, s32 arg3, u8* arg4);
 
 #pragma GLOBAL_ASM("asm/nonmatchings/31F00/func_80031300.s")
 
@@ -34,7 +37,10 @@ void func_800314C0(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/31F00/func_8003195C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/31F00/func_800319E0.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/31F00/func_800319E0.s")
+void func_800319E0(s32 arg0, s32 arg1, s32 arg2, s32 arg3, u8* arg4) {
+    osPfsReadWriteFile(&D_80092898[arg0], arg1, 0U, arg2, arg3, arg4);
+}
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/31F00/func_80031A44.s")
 void func_80031A44(s32 arg0, s32 arg1, s32 arg2, s32 arg3, u8 *arg4)
@@ -81,6 +87,33 @@ s32 func_80031ACC(s32 arg0, s32 arg1)
   return var_v1;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/31F00/func_80031BB0.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/31F00/func_80031BB0.s")
+s32 func_80031BB0(s32 arg0) {
+    s32 var_v1;
+
+    switch (arg0) {
+    case 1:
+        var_v1 = -1;
+        break;
+    case 4:
+    case 11:
+        var_v1 = -2;
+        break;
+    case 3:
+    case 10:
+        var_v1 = -3;
+        break;
+    case 2:
+        var_v1 = -4;
+        break;
+    case 9:
+        var_v1 = -5;
+        break;
+    default:
+        var_v1 = -6;
+        break;
+    }
+    return var_v1;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/31F00/func_80031C0C.s")

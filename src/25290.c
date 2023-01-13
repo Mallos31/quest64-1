@@ -1,12 +1,19 @@
 #include "common.h"
 
+extern s16* D_8008F68C;
+extern ALSndPlayer D_8008F620;
+extern s32 D_800539A4;
+extern s32 D_800539B8;
+
+
+
 //#pragma GLOBAL_ASM("asm/nonmatchings/25290/func_80024690.s")
-void func_80024690(s32 arg0, s32 arg1, s32 arg2) {
+void func_80024690(u32 arg0, void* arg1, s32 arg2) {
     OSIoMesg sp28;
 
     osInvalDCache(arg1, arg2);
-    osPiStartDma(&sp28, 0, 0, arg0, arg1, arg2, &D_8008F288);
-    osRecvMesg(&D_8008F288, 0, 1);
+    osPiStartDma(&sp28, 0, 0, arg0, arg1, (u32) arg2, &D_8008F288);
+    osRecvMesg(&D_8008F288, NULL, 1);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/25290/func_80024704.s")
@@ -31,8 +38,8 @@ void func_800250E8(void* arg0) {
 void func_8002513C(s32 arg0, s32 arg1, u8* arg2, s32 arg3, u8* arg4) {
     ALBank* temp_s0_2;
 
-    D_8008F978.unk190 = alHeapDBAlloc(0, 0,(ALHeap *)&D_8008F240, 1, 0x8000);
-    D_8008F978.unk32C = alHeapDBAlloc(0, 0, &D_8008F240, 1, 0x8000);
+    D_8008F978.unk190 = (s32) alHeapDBAlloc(0, 0,(ALHeap *)&D_8008F240, 1, 0x8000);
+    D_8008F978.unk32C = (s32) alHeapDBAlloc(0, 0, &D_8008F240, 1, 0x8000);
     D_8008F978.unk0 = 0x40;
     D_8008F978.unk4 = 0x40;
     D_8008F978.unk8 = 0x10;
@@ -45,7 +52,7 @@ void func_8002513C(s32 arg0, s32 arg1, u8* arg2, s32 arg3, u8* arg4) {
     D_8008F978.unk19C = 0x40;
     D_8008F978.unk1A0 = 0x40;
     D_8008F978.unk1A4 = 0x10;
-    D_8008F978.unk1A8 = &D_8008F240;
+    D_8008F978.unk1A8 = (s32) &D_8008F240;
     D_8008F978.unk1AC = 0;
     D_8008F978.unk1B0 = 0;
     D_8008F978.unk1B4 = 0;
@@ -54,11 +61,11 @@ void func_8002513C(s32 arg0, s32 arg1, u8* arg2, s32 arg3, u8* arg4) {
     func_80025040(arg2);
     alSeqFileNew(D_800538F0, arg2);
     D_800538E8 = alHeapDBAlloc(0, 0, &D_8008F240, 1, arg1 - arg0);
-    func_80024690(arg0, D_800538E8, arg1 - arg0);
+    func_80024690(arg0, (void*)D_800538E8, arg1 - arg0);
     alBnkfNew((ALBankFile *)D_800538E8, arg4);
-    temp_s0_2 = D_800538E8->unk4;
+    temp_s0_2 = D_800538E8->bankArray[0];
     alSeqpSetBank((ALSeqPlayer *)&D_8008F994, temp_s0_2);
-    alSeqpSetBank(&D_8008FB30, temp_s0_2);
+    alSeqpSetBank((ALSeqPlayer *)&D_8008FB30, temp_s0_2);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/25290/func_800252D8.s")
@@ -73,10 +80,17 @@ void func_8002513C(s32 arg0, s32 arg1, u8* arg2, s32 arg3, u8* arg4) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/25290/func_80025634.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/25290/func_8002568C.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/25290/func_8002568C.s")
+void func_8002568C(s32 arg0) {
+    alSndpSetSound(&D_8008F620, D_8008F68C[arg0]);
+    alSndpStop(&D_8008F620);
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/25290/func_800256D4.s")
-
+//#pragma GLOBAL_ASM("asm/nonmatchings/25290/func_800256D4.s")
+void func_800256D4(s32 arg0) {
+    alSndpSetSound(&D_8008F620, D_8008F68C[arg0]);
+    alSndpGetState(&D_8008F620);
+}
 #pragma GLOBAL_ASM("asm/nonmatchings/25290/func_8002571C.s")
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/25290/func_800258F8.s")
@@ -124,6 +138,13 @@ s32 func_80026434(u32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/25290/func_80026488.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/25290/func_8002650C.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/25290/func_8002650C.s")
+void func_8002650C(void) {
+    if (D_800539A4 != 0xFF) {
+        func_8002568C(D_800539A4);
+    }
+    D_800539B8 = 0;
+    D_800539A4 = 0xFF;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/25290/func_80026554.s")

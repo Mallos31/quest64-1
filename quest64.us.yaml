@@ -2,10 +2,11 @@ options:
   base_path: .
   basename: quest64
   compiler: IDO
-  create_detected_syms: yes
+  #create_detected_syms: yes
   find_file_boundaries: True
   platform: n64
   symbol_addrs_path: symbol_addrs.us.txt
+  migrate_rodata_to_functions: True
   target_path: baserom.us.z64
 segments:
   - name:  header
@@ -213,10 +214,51 @@ segments:
       - [0x496E0, asm, reverb]
       - [0x4A330, asm, seq]
       - [0x4A950, asm, synsetpriority]
-  - [0x4AAF0, bin, ucode_boot]
-  - [0x4ABC0, bin, ucode]
-  - [0x4BFF0, bin]  # TBD whether this is actually code
-  - [0x72FD0, bin, ucode_data]
+      - [0x4AAF0, bin, ucode_boot]
+      - [0x4ABC0, bin, ucode]
+      - [0x4BFF0, bin]  # TBD whether this is actually code
+      - [0x71AF0, rodata, 1850]
+      - [0x71B10, rodata, 33D0]
+      - [0x71D10, rodata, 8650]
+      - [0x71D50, rodata, 97B0]
+      - [0x71DD0, rodata, C120]
+      - [0x71DF0, rodata, C910]
+      - [0x71E60, rodata, FA60]
+      - [0x71EC0, rodata, 12740]
+      - [0x72090, rodata, 15440]
+      - [0x72130, rodata, 191F0]
+      - [0x721F0, rodata, 1BCD0]
+      - [0x72210, rodata, 1D160]
+      - [0x722C0, .rodata, 1EDF0]
+      - [0x722D0, rodata, camera] #!TODO Rename when camera.c gets renamed. It'd DEFINITELY not camera.
+      - [0x72300, rodata, 25290]
+      - [0x72330, rodata, 27640]
+      - [0x72350, rodata, 2C110]
+      - [0x725D0, rodata, 2F1E0]
+      - [0x72650, .rodata, 31F00]
+      - [0x72680, rodata, 328F0]
+      - [0x726B0, rodata, setintmask]
+      - [0x72740, rodata, sinf]
+      - [0x72790, rodata, perspective]
+      - [0x727A0, rodata, lookatref]
+      - [0x727B0, rodata, cosf]
+      - [0x72800, rodata, synthesizer]
+      - [0x72810, rodata, csplayer]
+      - [0x72A50, rodata, cseq]
+      - [0x72A60, rodata, sndplayer]
+      - [0x72AA0, rodata, exceptasm]
+      - [0x72AF0, rodata, devmgr]
+      - [0x72B10, rodata, libm_vals]
+      - [0x72B20, rodata, xprintf]
+      - [0x72C20, rodata, drvrNew]
+      - [0x72C40, rodata, resample]
+      - [0x72C80, rodata, env]
+      - [0x72CE0, rodata, seqplayer]
+      - [0x72F20, rodata, cents2ratio]
+      - [0x72F30, rodata, xldtob]
+      - [0x72F90, rodata, reverb]
+      - [0x72FC0, rodata, seq]
+      - [0x72FD0, bin, ucode_data]
   - [0x737D0, bin]
   - [0x73A90, bin]
   - [0x77560, bin, map_data_common]

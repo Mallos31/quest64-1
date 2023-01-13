@@ -1,3 +1,13 @@
+.section .late_rodata
+glabel jtbl_80070EF0
+/* 71AF0 80070EF0 80000E54 */ .word .L80000E54
+/* 71AF4 80070EF4 80000E64 */ .word .L80000E64
+/* 71AF8 80070EF8 80000E74 */ .word .L80000E74
+/* 71AFC 80070EFC 80000E84 */ .word .L80000E84
+/* 71B00 80070F00 80000E94 */ .word .L80000E94
+
+
+.section .text
 glabel func_80000C50
 /* 1850 80000C50 27BDFFD0 */  addiu      $sp, $sp, -0x30
 /* 1854 80000C54 AFBF002C */  sw         $ra, 0x2C($sp)
@@ -128,32 +138,32 @@ glabel func_80000C50
 /* 1A34 80000E34 2F210005 */  sltiu      $at, $t9, 0x5
 /* 1A38 80000E38 10200018 */  beqz       $at, .L80000E9C
 /* 1A3C 80000E3C 0019C880 */   sll       $t9, $t9, 2
-/* 1A40 80000E40 3C018007 */  lui        $at, %hi(jtbl_80070EF0_main)
+/* 1A40 80000E40 3C018007 */  lui        $at, %hi(jtbl_80070EF0)
 /* 1A44 80000E44 00390821 */  addu       $at, $at, $t9
-/* 1A48 80000E48 8C390EF0 */  lw         $t9, %lo(jtbl_80070EF0_main)($at)
+/* 1A48 80000E48 8C390EF0 */  lw         $t9, %lo(jtbl_80070EF0)($at)
 /* 1A4C 80000E4C 03200008 */  jr         $t9
 /* 1A50 80000E50 00000000 */   nop
-glabel L80000E54
+glabel .L80000E54
 /* 1A54 80000E54 0C000600 */  jal        func_80001800
 /* 1A58 80000E58 00000000 */   nop
 /* 1A5C 80000E5C 10000010 */  b          .L80000EA0
 /* 1A60 80000E60 8E030000 */   lw        $v1, 0x0($s0)
-glabel L80000E64
+glabel .L80000E64
 /* 1A64 80000E64 0C00082D */  jal        func_800020B4
 /* 1A68 80000E68 00000000 */   nop
 /* 1A6C 80000E6C 1000000C */  b          .L80000EA0
 /* 1A70 80000E70 8E030000 */   lw        $v1, 0x0($s0)
-glabel L80000E74
+glabel .L80000E74
 /* 1A74 80000E74 0C00089F */  jal        func_8000227C
 /* 1A78 80000E78 00000000 */   nop
 /* 1A7C 80000E7C 10000008 */  b          .L80000EA0
 /* 1A80 80000E80 8E030000 */   lw        $v1, 0x0($s0)
-glabel L80000E84
+glabel .L80000E84
 /* 1A84 80000E84 0C00090A */  jal        func_80002428
 /* 1A88 80000E88 00000000 */   nop
 /* 1A8C 80000E8C 10000004 */  b          .L80000EA0
 /* 1A90 80000E90 8E030000 */   lw        $v1, 0x0($s0)
-glabel L80000E94
+glabel .L80000E94
 /* 1A94 80000E94 0C00097A */  jal        func_800025E8
 /* 1A98 80000E98 00000000 */   nop
 .L80000E9C:

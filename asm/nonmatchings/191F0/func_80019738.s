@@ -1,3 +1,9 @@
+.section .late_rodata
+glabel D_800715A8
+/* 721A8 800715A8 400921FB54442D18 */ .double 3.14159265358979312
+
+
+.section .text
 glabel func_80019738
 /* 1A338 80019738 27BDFEF8 */  addiu      $sp, $sp, -0x108
 /* 1A33C 8001973C F7BE0050 */  sdc1       $f30, 0x50($sp)

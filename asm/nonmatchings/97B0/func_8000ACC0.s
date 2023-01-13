@@ -1,3 +1,18 @@
+.section .late_rodata
+glabel jtbl_80071198
+/* 71D98 80071198 8000AD88 */ .word .L8000AD88
+/* 71D9C 8007119C 8000AD88 */ .word .L8000AD88
+/* 71DA0 800711A0 8000ADA4 */ .word .L8000ADA4
+/* 71DA4 800711A4 8000AD88 */ .word .L8000AD88
+/* 71DA8 800711A8 8000AD94 */ .word .L8000AD94
+/* 71DAC 800711AC 8000ADA4 */ .word .L8000ADA4
+/* 71DB0 800711B0 8000ADA4 */ .word .L8000ADA4
+/* 71DB4 800711B4 8000AD88 */ .word .L8000AD88
+/* 71DB8 800711B8 8000ADA4 */ .word .L8000ADA4
+/* 71DBC 800711BC 8000AD94 */ .word .L8000AD94
+
+
+.section .text
 glabel func_8000ACC0
 /* B8C0 8000ACC0 27BDFFB0 */  addiu      $sp, $sp, -0x50
 /* B8C4 8000ACC4 AFB00020 */  sw         $s0, 0x20($sp)
@@ -28,7 +43,7 @@ glabel func_8000ACC0
 /* B928 8000AD28 120000B4 */  beqz       $s0, .L8000AFFC
 /* B92C 8000AD2C 97AD005E */   lhu       $t5, 0x5E($sp)
 /* B930 8000AD30 31AE8000 */  andi       $t6, $t5, 0x8000
-/* B934 8000AD34 15C0001B */  bnez       $t6, L8000ADA4
+/* B934 8000AD34 15C0001B */  bnez       $t6, .L8000ADA4
 /* B938 8000AD38 3C028005 */   lui       $v0, %hi(D_8004C2A8)
 /* B93C 8000AD3C 8C790020 */  lw         $t9, 0x20($v1)
 /* B940 8000AD40 2442C2A8 */  addiu      $v0, $v0, %lo(D_8004C2A8)
@@ -42,23 +57,23 @@ glabel func_8000ACC0
 /* B960 8000AD60 010C6825 */  or         $t5, $t0, $t4
 /* B964 8000AD64 25AEFFFF */  addiu      $t6, $t5, -0x1
 /* B968 8000AD68 2DC1000A */  sltiu      $at, $t6, 0xA
-/* B96C 8000AD6C 1020000D */  beqz       $at, L8000ADA4
+/* B96C 8000AD6C 1020000D */  beqz       $at, .L8000ADA4
 /* B970 8000AD70 000E7080 */   sll       $t6, $t6, 2
-/* B974 8000AD74 3C018007 */  lui        $at, %hi(jtbl_80071198_main)
+/* B974 8000AD74 3C018007 */  lui        $at, %hi(jtbl_80071198)
 /* B978 8000AD78 002E0821 */  addu       $at, $at, $t6
-/* B97C 8000AD7C 8C2E1198 */  lw         $t6, %lo(jtbl_80071198_main)($at)
+/* B97C 8000AD7C 8C2E1198 */  lw         $t6, %lo(jtbl_80071198)($at)
 /* B980 8000AD80 01C00008 */  jr         $t6
 /* B984 8000AD84 00000000 */   nop
-glabel L8000AD88
+glabel .L8000AD88
 /* B988 8000AD88 00107842 */  srl        $t7, $s0, 1
-/* B98C 8000AD8C 10000005 */  b          L8000ADA4
+/* B98C 8000AD8C 10000005 */  b          .L8000ADA4
 /* B990 8000AD90 31F0FFFF */   andi      $s0, $t7, 0xFFFF
-glabel L8000AD94
+glabel .L8000AD94
 /* B994 8000AD94 0010C883 */  sra        $t9, $s0, 2
 /* B998 8000AD98 02198021 */  addu       $s0, $s0, $t9
 /* B99C 8000AD9C 3209FFFF */  andi       $t1, $s0, 0xFFFF
 /* B9A0 8000ADA0 01208025 */  or         $s0, $t1, $zero
-glabel L8000ADA4
+glabel .L8000ADA4
 /* B9A4 8000ADA4 8FAA0060 */  lw         $t2, 0x60($sp)
 /* B9A8 8000ADA8 44908000 */  mtc1       $s0, $f16
 /* B9AC 8000ADAC 8D4B0068 */  lw         $t3, 0x68($t2)

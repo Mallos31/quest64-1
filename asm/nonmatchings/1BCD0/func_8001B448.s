@@ -1,3 +1,16 @@
+.section .late_rodata
+glabel jtbl_800715F0
+/* 721F0 800715F0 8001B50C */ .word .L8001B50C
+/* 721F4 800715F4 8001B70C */ .word .L8001B70C
+/* 721F8 800715F8 8001B910 */ .word .L8001B910
+/* 721FC 800715FC 8001BB1C */ .word .L8001BB1C
+/* 72200 80071600 8001BD28 */ .word .L8001BD28
+/* 72204 80071604 8001BF2C */ .word .L8001BF2C
+/* 72208 80071608 8001C130 */ .word .L8001C130
+/* 7220C 8007160C 8001C338 */ .word .L8001C338
+
+
+.section .text
 glabel func_8001B448
 /* 1C048 8001B448 27BDFEF0 */  addiu      $sp, $sp, -0x110
 /* 1C04C 8001B44C AFB30014 */  sw         $s3, 0x14($sp)
@@ -47,12 +60,12 @@ glabel func_8001B448
 /* 1C0EC 8001B4EC 10200414 */  beqz       $at, .L8001C540
 /* 1C0F0 8001B4F0 01C01825 */   or        $v1, $t6, $zero
 /* 1C0F4 8001B4F4 00047880 */  sll        $t7, $a0, 2
-/* 1C0F8 8001B4F8 3C018007 */  lui        $at, %hi(jtbl_800715F0_main)
+/* 1C0F8 8001B4F8 3C018007 */  lui        $at, %hi(jtbl_800715F0)
 /* 1C0FC 8001B4FC 002F0821 */  addu       $at, $at, $t7
-/* 1C100 8001B500 8C2F15F0 */  lw         $t7, %lo(jtbl_800715F0_main)($at)
+/* 1C100 8001B500 8C2F15F0 */  lw         $t7, %lo(jtbl_800715F0)($at)
 /* 1C104 8001B504 01E00008 */  jr         $t7
 /* 1C108 8001B508 00000000 */   nop
-glabel L8001B50C
+glabel .L8001B50C
 /* 1C10C 8001B50C 3C048008 */  lui        $a0, %hi(gMasterGfxPos)
 /* 1C110 8001B510 2484B2FC */  addiu      $a0, $a0, %lo(gMasterGfxPos)
 /* 1C114 8001B514 8C820000 */  lw         $v0, 0x0($a0)
@@ -188,7 +201,7 @@ glabel L8001B50C
 /* 1C300 8001B700 AC4F0000 */  sw         $t7, 0x0($v0)
 /* 1C304 8001B704 1000038F */  b          .L8001C544
 /* 1C308 8001B708 8FB00008 */   lw        $s0, 0x8($sp)
-glabel L8001B70C
+glabel .L8001B70C
 /* 1C30C 8001B70C 3C048008 */  lui        $a0, %hi(gMasterGfxPos)
 /* 1C310 8001B710 2484B2FC */  addiu      $a0, $a0, %lo(gMasterGfxPos)
 /* 1C314 8001B714 8C850000 */  lw         $a1, 0x0($a0)
@@ -326,7 +339,7 @@ glabel L8001B70C
 /* 1C504 8001B904 AC590000 */  sw         $t9, 0x0($v0)
 /* 1C508 8001B908 1000030E */  b          .L8001C544
 /* 1C50C 8001B90C 8FB00008 */   lw        $s0, 0x8($sp)
-glabel L8001B910
+glabel .L8001B910
 /* 1C510 8001B910 3C048008 */  lui        $a0, %hi(gMasterGfxPos)
 /* 1C514 8001B914 2484B2FC */  addiu      $a0, $a0, %lo(gMasterGfxPos)
 /* 1C518 8001B918 8C850000 */  lw         $a1, 0x0($a0)
@@ -465,7 +478,7 @@ glabel L8001B910
 /* 1C710 8001BB10 AC590000 */  sw         $t9, 0x0($v0)
 /* 1C714 8001BB14 1000028B */  b          .L8001C544
 /* 1C718 8001BB18 8FB00008 */   lw        $s0, 0x8($sp)
-glabel L8001BB1C
+glabel .L8001BB1C
 /* 1C71C 8001BB1C 3C048008 */  lui        $a0, %hi(gMasterGfxPos)
 /* 1C720 8001BB20 2484B2FC */  addiu      $a0, $a0, %lo(gMasterGfxPos)
 /* 1C724 8001BB24 8C850000 */  lw         $a1, 0x0($a0)
@@ -604,7 +617,7 @@ glabel L8001BB1C
 /* 1C91C 8001BD1C AC590000 */  sw         $t9, 0x0($v0)
 /* 1C920 8001BD20 10000208 */  b          .L8001C544
 /* 1C924 8001BD24 8FB00008 */   lw        $s0, 0x8($sp)
-glabel L8001BD28
+glabel .L8001BD28
 /* 1C928 8001BD28 3C048008 */  lui        $a0, %hi(gMasterGfxPos)
 /* 1C92C 8001BD2C 2484B2FC */  addiu      $a0, $a0, %lo(gMasterGfxPos)
 /* 1C930 8001BD30 8C850000 */  lw         $a1, 0x0($a0)
@@ -741,7 +754,7 @@ glabel L8001BD28
 /* 1CB20 8001BF20 AC590000 */  sw         $t9, 0x0($v0)
 /* 1CB24 8001BF24 10000187 */  b          .L8001C544
 /* 1CB28 8001BF28 8FB00008 */   lw        $s0, 0x8($sp)
-glabel L8001BF2C
+glabel .L8001BF2C
 /* 1CB2C 8001BF2C 3C048008 */  lui        $a0, %hi(gMasterGfxPos)
 /* 1CB30 8001BF30 2484B2FC */  addiu      $a0, $a0, %lo(gMasterGfxPos)
 /* 1CB34 8001BF34 8C850000 */  lw         $a1, 0x0($a0)
@@ -878,7 +891,7 @@ glabel L8001BF2C
 /* 1CD24 8001C124 AC590000 */  sw         $t9, 0x0($v0)
 /* 1CD28 8001C128 10000106 */  b          .L8001C544
 /* 1CD2C 8001C12C 8FB00008 */   lw        $s0, 0x8($sp)
-glabel L8001C130
+glabel .L8001C130
 /* 1CD30 8001C130 3C048008 */  lui        $a0, %hi(gMasterGfxPos)
 /* 1CD34 8001C134 2484B2FC */  addiu      $a0, $a0, %lo(gMasterGfxPos)
 /* 1CD38 8001C138 8C850000 */  lw         $a1, 0x0($a0)
@@ -1016,7 +1029,7 @@ glabel L8001C130
 /* 1CF2C 8001C32C AC590000 */  sw         $t9, 0x0($v0)
 /* 1CF30 8001C330 10000084 */  b          .L8001C544
 /* 1CF34 8001C334 8FB00008 */   lw        $s0, 0x8($sp)
-glabel L8001C338
+glabel .L8001C338
 /* 1CF38 8001C338 3C048008 */  lui        $a0, %hi(gMasterGfxPos)
 /* 1CF3C 8001C33C 2484B2FC */  addiu      $a0, $a0, %lo(gMasterGfxPos)
 /* 1CF40 8001C340 8C850000 */  lw         $a1, 0x0($a0)

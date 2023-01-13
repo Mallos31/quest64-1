@@ -1,3 +1,9 @@
+.section .late_rodata
+glabel D_80071230
+/* 71E30 80071230 3FECCCCCCCCCCCCD */ .double 0.900000000000000022
+
+
+.section .text
 glabel func_8000E224
 /* EE24 8000E224 3C058008 */  lui        $a1, %hi(gMasterGfxPos)
 /* EE28 8000E228 24A5B2FC */  addiu      $a1, $a1, %lo(gMasterGfxPos)

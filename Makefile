@@ -2,7 +2,7 @@ BASENAME  = quest64
 VERSION  := us
 
 BUILD_DIR = build
-ASM_DIRS  = asm
+ASM_DIRS  = asm asm/data
 BIN_DIRS  = assets
 SRC_DIR   = src
 
@@ -37,6 +37,9 @@ OBJCOPYFLAGS = -O binary
 CC := $(TOOLS_DIR)/ido5.3_recomp/cc
 
 OPT_FLAGS := -O2 -g3
+
+OBJECTS := $(shell grep -E 'build.+\.o' quest64.ld -o)
+DEPENDS := $(OBJECTS:=.d) 
 MIPSISET := -mips2 -o32
 
 INCLUDE_CFLAGS := -I . -I include -I include/2.0I -I include/2.0I/PR
