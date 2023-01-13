@@ -87,8 +87,8 @@ s32 func_80031ACC(s32 arg0, s32 arg1)
   return var_v1;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/31F00/func_80031BB0.s")
-/*s32 func_80031BB0(s32 arg0) {   NEEDS RODATA
+//#pragma GLOBAL_ASM("asm/nonmatchings/31F00/func_80031BB0.s")
+s32 func_80031BB0(s32 arg0) {
     s32 var_v1;
 
     switch (arg0) {
@@ -114,6 +114,6 @@ s32 func_80031ACC(s32 arg0, s32 arg1)
         break;
     }
     return var_v1;
-}*/
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/31F00/func_80031C0C.s")
